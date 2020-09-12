@@ -8,41 +8,41 @@ var quiz = new AnimalQuiz();
 
 class AnimalQuiz{
   var images = [
-     "cat","crocodile","dog","elephant","giraffe","lion","monkey","snake","tiger","zebra"
+     "car","glasses","hornspeaker","mobilephone","notebook","pen","pencil","train","umbrella","backpack"
   ];
 
 
   var questions = [
-    "1.What animal is this picture?.",
-    "2.What animal is this picture?.",
-    "3.What animal is this picture?.",
-    "4.What animal is this picture?.",
-    "5.What animal is this picture?.",
-    "6.What animal is this picture?.",
-    "7.What animal is this picture?.",
-    "8.What animal is this picture?.",
-    "9.What animal is this picture?.",
-    "10.What animal is this picture?.",
+    "1.What is this?.",
+    "2.What is this?.",
+    "3.What is this?.",
+    "4.What is this?.",
+    "5.What is this?.",
+    "6.What is this?.",
+    "7.What is this?.",
+    "8.What is this?.",
+    "9.What is this?.",
+    "10.What is this?.",
   ];
 
 
   var choices = [
-    ["cat", "sheep", "alligator", "cow"],
-    ["cat", "crocodile", "slug", "horse"],
-    ["mouse", "dog", "elephant", "donkey"],
-    ["spider", "dog", "elephant", "owl"],
-    ["spider", "snake", "giraffe", "owl"],
-    ["spider", "snake", "lion", "owl"],
-    ["spider", "snake", "monkey", "owl"],
-    ["spider", "snake", "hawk", "owl"],
-    ["spider", "snake", "tiger", "owl"],
-    ["spider", "snake", "zebra", "owl"],
+    ["car", "glasses", "hornspeaker", "mobilephone"],
+    ["glasse", "glase", "glasses", "glas"],
+    ["horn", "ker", "hornspeaker", "speaker"],
+    ["mobile", "phone", "phonemobile", "mobilephone"],
+    ["booknote", "notebookbook", "notepan", "notebook"],
+    ["pen", "pan", "pun", "pon"],
+    ["pancil", "puncil", "poncil", "pencil"],
+    ["trains", "train", "training", "traines"],
+    ["umbrellas", "umbrellaes", "umbrella", "umbrellaing"],
+    ["backpuck", "backpeck", "backpack", "backpacks"],
 
   ];
 
 
   var correctAnswers = [
-    "cat","crocodile","dog","elephant","giraffe","lion","monkey","snake","tiger","zebra"
+     "car","glasses","hornspeaker","mobilephone","notebook","pen","pencil","train","umbrella","backpack"
   ];
 }
 

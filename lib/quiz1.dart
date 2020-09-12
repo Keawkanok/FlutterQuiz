@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/home.dart';
-import 'package:quiz/resultpage.dart';
-import 'dart:async'; // Timer
-import 'dart:convert';
+import 'package:flutter/services.dart';
+
+// import 'package:quiz/resultpage.dart';
+// import 'dart:async'; // Timer
+// import 'dart:convert';
 
 
 var finalScore = 0;
@@ -71,67 +73,12 @@ class Quiz1State extends State<Quiz1> {
   // int score;
   // String message;
   // String image;
-  
-//  List<String> images = [
-//     "images/success.jpg",
-//     "images/good.jpg",
-//     "images/bad.jpg",
-//   ];
-
-
-
-
-//  @override
-//   void initState(){
-//     if (this.score < 5) {
-//       image = images[2];
-//       message = "You Did Very Hard..\n" + "You Scred ${this.score}";
-//       print("${score}");
-//     }else if(this.score < 10){
-//       image = images[1];
-//       message = "You Did Very Better..\n" + "You Scred ${this.score}";
-//       print("${this.score}");
-//     }else{
-//       image = images[0];
-//       message = "You Did Very Well..\n" + "You Scred ${this.score}";
-//       print("${this.score}");
-//     }
-//     super.initState();
-//   }
- 
- 
-  
-
-
-  //  void checkanswer(String Answer){
-  //   // if(mydatas[2]["1"] == mydatas[1]["1"][Answer]){
-  //   //   marks = marks + 5;
-  //   //   print(marks);
-  //   //   colortoshow = rigth;
-  //   // }else{
-  //   //   colortoshow = wrong;
-  //   // }
-  //   setState(() {
-  //     // btnColors[Answer] = colortoshow;
-  //     canceltimer = true;
-  //   });
-  //   Timer(Duration(seconds: 2), nextqusetion);
-  // }
-
-  //  Widget choicebutton(String Answer){
-  //    return Padding(
-  //      padding: EdgeInsets.symmetric(
-  //       // vertical: 10.0,
-  //       // horizontal: 20.0,
-  //     ),
-  //     child: MaterialButton(
-  //        onPressed: () => checkanswer(Answer),
-  //     ),
-  //   );
-  //  }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,DeviceOrientation.portraitUp
+    ]);
     return new WillPopScope(
         onWillPop: (){
           return showDialog(context: context,builder: (context) => AlertDialog(
@@ -139,7 +86,7 @@ class Quiz1State extends State<Quiz1> {
               "Quiz",
             ),
             content: Text(
-              "You Can't Go Back At This Stage."
+              "You can't go back to this step."
             ),
               actions: <Widget>[
               FlatButton(
@@ -151,7 +98,7 @@ class Quiz1State extends State<Quiz1> {
                 ),
               ),
             ],
-          ));
+            ));
         },
         child: Scaffold(
           appBar: AppBar(
@@ -160,7 +107,6 @@ class Quiz1State extends State<Quiz1> {
             ),
           ),
           body: new Container(
-            
             margin: const EdgeInsets.all(10.0),
             alignment: Alignment.topCenter,
             child: new Column(
@@ -172,9 +118,44 @@ class Quiz1State extends State<Quiz1> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      new Padding(padding: EdgeInsets.all(10.0)),
-
-      
+                      // new Padding(padding: EdgeInsets.all(10.0)),
+                    Expanded(
+                      flex: 8,
+                      child: Material(
+                        // elevation: 5.0,
+                        child: Container(
+                          child: Column(
+                            children: <Widget>[
+                              Material(
+                                child: Container(
+                                  width: 300.0,
+                                  height: 200.0,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    child: Container(
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                        widthFactor: 0.75,
+                                        heightFactor: 0.75,
+                                      child: Image(
+                                      image: AssetImage(
+                                        "images/${quiz.images[questionNumber]}.jpg",
+                                      ),
+                                    ),
+                                  ),
+                                ),),),
+                              ),
+                              Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 5.0,
+                                horizontal: 15.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                       // new Text("${quiz.questions.length}",
                       //   // style: new TextStyle(
                       //   //     fontSize: 22.0
@@ -192,11 +173,12 @@ class Quiz1State extends State<Quiz1> {
                 ),
              
                 //image
-                new Image.asset(
-                  "images/${quiz.images[questionNumber]}.jpg",
-                  height: 220.0,
-                  width: 240.0,
-                ),
+                // new Image.asset(
+                //   "images/${quiz.images[questionNumber]}.jpg",
+                //   height: 220.0,
+                //   width: 240.0,
+                // ),
+                
                 
                 new Padding(padding: EdgeInsets.all(15.0)),
 
@@ -371,57 +353,6 @@ class Quiz1State extends State<Quiz1> {
     );
     
   }
-
-
-
-
-  // void resetQuiz(){
-  //   setState(() {
-  //     Navigator.of(context).pop(); 
-  //     finalScore = 0;
-  //     questionNumber = 0;
-  //   });
-  // }
-
-//  void starttimer() async {
-//     const onesec = Duration(seconds: 1);
-//     Timer.periodic(onesec, (Timer time) { 
-//       setState(() {
-//         if(timer < 1){
-//           time.cancel();
-//           nextqusetion();
-//         }else if(canceltimer == true){
-//           time.cancel();
-//         }else{
-//           timer = timer - 1;
-//         }
-//         showtimer = timer.toString();
-//       });
-//     });
-//   }
-  
-//  void nextqusetion(){
-//     canceltimer = false;
-//     timer = 30;
-//     setState(() {
-//       if(finalScore < 1){
-//         finalScore++;
-//       }else{
-//         // Navigator.of(context).pushReplacement(MaterialPageRoute(
-//         //   builder: (context) => resultpage(),
-//         // ));
-//       }
-      
-//     });
-//     starttimer();
-//   }
-
-  void q(){
-    if(quiz.questions.length - 1 == quiz.questions.length - 1){
-      //  canceltimer = true;
-      //  print(canceltimer);
-    }
-  }
   void updateQuestion(){
     setState(() {
       if(questionNumber == quiz.questions.length - 1){
@@ -431,7 +362,6 @@ class Quiz1State extends State<Quiz1> {
         questionNumber++;
       }
     });
-    // Timer(Duration(seconds: 1), nextqusetion);
   }
 }
 
@@ -442,14 +372,39 @@ class Summary extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      // onWillPop: () async => false,
-      // child: Scaffold(
-        appBar: AppBar(
-        title: Text(
-          "Result"
-        ),
-      ),
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,DeviceOrientation.portraitUp
+    ]);
+    return new WillPopScope(
+      onWillPop: (){
+         return showDialog(context: context,builder: (context) => AlertDialog(
+            title: Text("Quiz",),
+            content: Text(
+              "You can't return to the quiz page."
+            ),
+            // leading: new Container(),
+              actions: <Widget>[
+              FlatButton(
+                onPressed: (){
+                    questionNumber = 0;
+                    finalScore = 0;
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => new AnimaQuiz(),));
+                },
+                child: Text(
+                  "OK",
+                ),
+              ),
+            ],
+        ));
+      },
+       child: Scaffold(
+          appBar: AppBar(
+          // automaticallyImplyLeading: false,
+            title: Text(
+              "Result",
+            ),
+          ),
         body: new Column(
           // child: new Column(
             // mainAxisAlignment: MainAxisAlignment.center,
@@ -529,11 +484,7 @@ class Summary extends StatelessWidget{
             ],
           // ),
         ),
-
-
       // ),
-    );
+    ));
   }
-
-
 }

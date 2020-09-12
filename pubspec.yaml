@@ -56,6 +56,16 @@ flutter:
       - images/snake.jpg
       - images/tiger.jpg
       - images/monkey.jpg
+      - images/car.jpg
+      - images/glasses.jpg
+      - images/hornspeaker.jpg
+      - images/mobilephone.jpg
+      - images/notebook.jpg
+      - images/pen.jpg
+      - images/pencil.jpg
+      - images/train.jpg
+      - images/umbrella.jpg
+      - images/backpack.jpg
       - images/success.jpg
       - images/good.jpg
       - images/bad.jpg

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/quiz2.dart';
 import 'package:flutter/services.dart';
+// import 'package:quiz/home.dart';
 import 'dart:ui';
 import 'quiz1.dart';
 
@@ -16,17 +17,58 @@ class _AnimaQuizState extends State<AnimaQuiz> {
      SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,DeviceOrientation.portraitUp
     ]);
-   return new Scaffold(
-     appBar: new AppBar(
-        title: new Text(
-          "Choose a test",
-           style: TextStyle(
-            // fontFamily: "Quando"
-            fontSize: 22.0,
-          ),
-        ),
+    return new WillPopScope(
+      onWillPop: (){
+         return showDialog(context: context,builder: (context) => AlertDialog(
+            title: Text("Choose a test",),
+            content: Text(
+              "......."
+            ),
+            // leading: new Container(),
+              actions: <Widget>[
+              FlatButton(
+                onPressed: (){
+                    // questionNumber = 0;
+                    // finalScore = 0;
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => new AnimaQuiz(),));
+                },
+                child: Text(
+                  "OK",
+                ),
+              ),
+            ],
+        ));
+      },
+  //  return Scaffold(
+  //     // onWillPop: (){
+  //     // return showDialog(context: context,builder: (context) => AlertDialog(
+  //     appBar: AppBar(
+  //       // automaticallyImplyLeading: false,
+  //       title: Text(
+  //         "Choose a test",
+  //          style: TextStyle(
+  //           fontSize: 22.0,
+  //         ),
+  //       ),
+  //     ),
+        // leading: new Container(),
+        // actions: <Widget>[
+        //     FlatButton(
+        //       onPressed: (){
+        //           Navigator.of(context).pushReplacement(MaterialPageRoute(
+        //             builder: (context) => new AnimaQuiz(),));
+        //       }, child: null,
+        //     ),
+        //   ],
         // backgroundColor: Colors.blue,
-      ),
+       child: Scaffold(
+          appBar: AppBar(
+          // automaticallyImplyLeading: false,
+            title: Text(
+              "Choose a test",
+            ),
+          ),
      body: new Container(
           margin: const EdgeInsets.all(15.0),
        child: new Column(  
@@ -53,8 +95,10 @@ class _AnimaQuizState extends State<AnimaQuiz> {
                     borderRadius: BorderRadius.circular(20.0)
                 ),
               ),
-            
-              new Padding(padding: EdgeInsets.all(20.0)),
+              Padding(
+                padding: 
+                EdgeInsets.all(20.0)
+              ),
               
               // button2 Quiz2
               new MaterialButton(
@@ -78,8 +122,8 @@ class _AnimaQuizState extends State<AnimaQuiz> {
             ],
           ),
         ),
-      );
-  }
+      ));
+    }
     
     
   void startQuiz1(){
