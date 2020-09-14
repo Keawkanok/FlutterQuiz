@@ -22,7 +22,7 @@ class _AnimaQuizState extends State<AnimaQuiz> {
          return showDialog(context: context,builder: (context) => AlertDialog(
             title: Text("Choose a test",),
             content: Text(
-              "......."
+              "You can't go back to this step, you must first select a quiz."
             ),
             // leading: new Container(),
               actions: <Widget>[
