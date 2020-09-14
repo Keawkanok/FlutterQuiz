@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/home.dart';
+import 'package:flutter/services.dart';
 
 var finalScore = 0;
-// var scores = 0;
 var questionNumber = 0;
 var quiz = new AnimalQuiz();
 
@@ -56,6 +56,9 @@ class _Quiz2State extends State<Quiz2> {
 
   @override
   Widget build(BuildContext context) {
+     SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,DeviceOrientation.portraitUp
+    ]);
      return new WillPopScope(
         onWillPop: (){
           return showDialog(context: context,builder: (context) => AlertDialog(
@@ -304,14 +307,39 @@ class Summary extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      // onWillPop: () async => false,
-      // child: Scaffold(
-        appBar: AppBar(
-        title: Text(
-          "Result"
-        ),
-      ),
+     SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,DeviceOrientation.portraitUp
+    ]);
+    return new WillPopScope(
+      onWillPop: (){
+         return showDialog(context: context,builder: (context) => AlertDialog(
+            title: Text("Quiz",),
+            content: Text(
+              "You can't return to the quiz page."
+            ),
+            // leading: new Container(),
+              actions: <Widget>[
+              FlatButton(
+                onPressed: (){
+                    questionNumber = 0;
+                    finalScore = 0;
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => new AnimaQuiz(),));
+                },
+                child: Text(
+                  "OK",
+                ),
+              ),
+            ],
+        ));
+      },
+       child: Scaffold(
+          appBar: AppBar(
+          // automaticallyImplyLeading: false,
+            title: Text(
+              "Result",
+            ),
+          ),
         body: new Column(
           // child: new Column(
             // mainAxisAlignment: MainAxisAlignment.center,
@@ -393,7 +421,7 @@ class Summary extends StatelessWidget{
 
 
       // ),
-    );
+    ));
   }
 
 

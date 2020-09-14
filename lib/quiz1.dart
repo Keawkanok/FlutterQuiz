@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 
 
 var finalScore = 0;
-// var scores = 0;
 var questionNumber = 0;
 var quiz = new AnimalQuiz();
 String message;
